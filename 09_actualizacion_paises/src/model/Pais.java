@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 
 public class Pais {
-	private int codigoPais;
+	private String codigoPais;
 	private String nombre;
 	private String continente;
 	private long poblacion;

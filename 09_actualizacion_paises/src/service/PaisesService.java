@@ -11,7 +11,7 @@ public class PaisesService {
 	String usuario = "root";
 	String password = "Fideguap03021995";
 	
-	public boolean guardarPais(int codigoPais, String nombre, String continente, long poblacion, String bandera) {
+	public boolean guardarPais(String codigoPais, String nombre, String continente, long poblacion, String bandera) {
 		
 		boolean res=false;
 		
@@ -20,7 +20,7 @@ public class PaisesService {
 			String sql="insert into paises values (?, ?, ?, ?, ?)";
 			PreparedStatement ps = con.prepareStatement(sql);
 			
-			ps.setInt(1, codigoPais);
+			ps.setString(1, codigoPais);
 			ps.setString(2, nombre);
 			ps.setString(3, continente);
 			ps.setLong(4, poblacion);
