@@ -1,14 +1,16 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
+
+
 
 public class Curso {
 	private int codigoCurso;
 	private String nombre;
 	private double precio;
-	private LocalDate fechaInicio;
-	private LocalDate fechaFin;
-	public Curso(int codigoCurso, String nombre, double precio, LocalDate fechaInicio, LocalDate fechaFin) {
+	private Date fechaInicio;
+	private Date fechaFin;
+	public Curso(int codigoCurso, String nombre, double precio, Date fechaInicio, Date fechaFin) {
 		super();
 		this.codigoCurso = codigoCurso;
 		this.nombre = nombre;
@@ -34,16 +36,16 @@ public class Curso {
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public LocalDate getFechaInicio() {
+	public Date getFechaInicio() {
 		return fechaInicio;
 	}
-	public void setFechaInicio(LocalDate fechaInicio) {
+	public void setFechaInicio(Date fechaInicio) {
 		this.fechaInicio = fechaInicio;
 	}
-	public LocalDate getFechaFin() {
+	public Date getFechaFin() {
 		return fechaFin;
 	}
-	public void setFechaFin(LocalDate fechaFin) {
+	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
 	
