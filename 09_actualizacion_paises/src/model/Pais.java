@@ -1,6 +1,6 @@
 package model;
 
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,10 +13,15 @@ import lombok.Setter;
 @Getter
 
 public class Pais {
+	@SerializedName ("alpha3Code")
 	private String codigoPais;
+	@SerializedName ("name")
 	private String nombre;
+	@SerializedName ("region")
 	private String continente;
+	@SerializedName ("population")
 	private long poblacion;
+	@SerializedName ("flag")
 	private String bandera;
 	
 }
