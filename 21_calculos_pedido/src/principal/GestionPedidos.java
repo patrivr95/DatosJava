@@ -16,8 +16,11 @@ public class GestionPedidos {
 		Future<String> f1 = executor.submit(()-> pedidosService.productoMasVendido());
 		Future<Double> f2 = executor.submit(()-> pedidosService.mediaUnidades());
 		
+		
 		while(!f1.isDone() || !f2.isDone()) {
-			pedidosService.pedidos();
+			pedidosService.pedidos()
+			.stream()
+			.forEach(n -> System.out.println(n));
 		}
 		
 		System.out.println(f1.get());

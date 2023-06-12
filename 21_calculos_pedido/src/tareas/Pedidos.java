@@ -21,7 +21,7 @@ public class Pedidos {
 		List<Pedido> pedidos = new ArrayList<>();
 		
 		try(Connection con=DriverManager.getConnection(url,usuario,password)){
-			String sql="SELECT producto FROM pedidos.pedidos WHERE unidades = (SELECT MAX(unidades) FROM pedidos.pedidos)";
+			 String sql = "select * from pedidos";
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next()) {
@@ -36,7 +36,10 @@ public class Pedidos {
 			ex.printStackTrace();
 		}
 		
-		return null;
+		return pedidos.stream()
+				.max((p1,p2)->Integer.compare(p1.getUnidades(),p2.getUnidades()))
+        		.orElse(new Pedido())
+        		.getProducto();
 	}
 
 	public List<Pedido> pedidos(){
