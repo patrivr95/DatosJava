@@ -1,9 +1,11 @@
 package principal;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import model.Pedido;
 import tareas.Pedidos;
 
 public class LanzadorCompletable {
@@ -15,6 +17,7 @@ public class LanzadorCompletable {
 		CompletableFuture<Double> cf2 = CompletableFuture.supplyAsync(()-> pedidosService.mediaUnidades(), executor);
 		cf1.whenCompleteAsync((r, ex) -> System.out.println("El producto más vendido es: "+ r));
 		cf2.whenCompleteAsync((r, ex) -> System.out.println("Media de unidades es: " + r));
+		List<Pedido> pedidos = pedidosService.pedidos();
+		pedidos.forEach(p-> System.out.println(p.getProducto() + ", " + p.getTienda()));
 	}
-
 }
