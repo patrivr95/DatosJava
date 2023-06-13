@@ -15,6 +15,7 @@ public class Lanzador {
 		CompletableFuture<Pais> cf=CompletableFuture.supplyAsync(()-> paisService.paisPoblado(), executor);
 		cf.whenComplete((r, ex) -> System.out.println(r.getNombre()));
 		paisService.continentes().forEach(System.out::println);
+		executor.shutdown();
 
 	}
 
