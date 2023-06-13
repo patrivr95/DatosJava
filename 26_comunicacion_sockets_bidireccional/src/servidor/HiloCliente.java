@@ -1,6 +1,8 @@
 package servidor;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.Socket;
 
@@ -12,8 +14,10 @@ public class HiloCliente implements Runnable {
 	
 	@Override
 	public void run() {
-		try(PrintStream out  = new PrintStream(sc.getOutputStream())){
-			out.println("hola");
+		try(PrintStream out  = new PrintStream(sc.getOutputStream());
+				BufferedReader bf = new BufferedReader(new InputStreamReader(sc.getInputStream()))){
+			
+			out.println("hola " + bf.readLine());
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
