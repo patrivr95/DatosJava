@@ -21,7 +21,7 @@ public class PaisesService {
 	
 	String url="jdbc:mysql://localhost:3306/mundo";
 	String usuario = "root";
-	String password = "Fideguap03021995";
+	String password = "*****";
 	String http = "https://restcountries.com/v2/all";
 	
 	public void guardarPais(Pais pais) {

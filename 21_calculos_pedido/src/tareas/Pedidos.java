@@ -14,7 +14,7 @@ public class Pedidos {
 	
 	String url="jdbc:mysql://localhost:3306/pedidos";
 	String usuario="root";
-	String password="Fideguap03021995";
+	String password="*****";
 	
 	public String productoMasVendido() {
 		

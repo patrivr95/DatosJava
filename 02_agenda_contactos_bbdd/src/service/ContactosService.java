@@ -15,7 +15,7 @@ public class ContactosService {
 	
 	String url="jdbc:mysql://localhost:3306/agenda";
 	String usuario="root";
-	String password="Fideguap03021995";
+	String password="*****";
 	
 	
 	public boolean guardarContacto(Integer telefono, String nombre,String email, int edad) {

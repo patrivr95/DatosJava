@@ -12,7 +12,7 @@ public class MostrarContactos {
 		// datos para obtener la conexion con la BBDD
 				String url ="jdbc:mysql://localhost:3306/agenda";
 				String usuario="root";
-				String password="Fideguap03021995";
+				String password="****";
 				
 				// conexion con la BBDD, que la tendremos que meter en un trycatch
 				try (Connection con=DriverManager.getConnection(url, usuario, password)) {

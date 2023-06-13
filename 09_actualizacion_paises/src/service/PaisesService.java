@@ -19,7 +19,7 @@ public class PaisesService {
 	
 	String url="jdbc:mysql://localhost:3306/mundo";
 	String usuario = "root";
-	String password = "Fideguap03021995";
+	String password = "*****";
 	String dir = "c:\\temp\\paises.json";
 	
 	public void guardarPais(Pais pais) {

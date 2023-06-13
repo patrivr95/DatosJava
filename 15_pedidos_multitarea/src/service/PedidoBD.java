@@ -12,7 +12,7 @@ import model.Pedido;
 public class PedidoBD {
 	String url = "jdbc:mysql://localhost:3306/pedidos";
 	String usuario= "root";
-	String password="Fideguap03201995";
+	String password="******";
 	
 	public void guardarPedido(Pedido pedido) {
 		try(Connection con=DriverManager.getConnection(url,usuario,password);){

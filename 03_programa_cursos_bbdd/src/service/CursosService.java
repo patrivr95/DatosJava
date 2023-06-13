@@ -16,7 +16,7 @@ public class CursosService {
 	
 	String url="jdbc:mysql://localhost:3306/cursos";
 	String usuario = "root";
-	String password="Fideguap03021995";
+	String password="*****";
 	
 	public boolean guardarCurso(int codigoCurso, String nombre, double precio, LocalDate fechaInicio, LocalDate fechaFin) {
 		
