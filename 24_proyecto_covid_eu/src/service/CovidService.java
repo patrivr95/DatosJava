@@ -15,36 +15,19 @@ import java.util.stream.Stream;
 
 import com.google.gson.Gson;
 
+import locator.ItemsLocator;
 import model.Item;
 import utilities.FechaALocalDate;
 
 public class CovidService {
 	
-	String http="https://opendata.ecdc.europa.eu/covid19/nationalcasedeath/json/";
-	
-	private Stream<Item> itemsFromJson(){
-		Gson gson=new Gson();
-		try {
-			HttpRequest request=HttpRequest.newBuilder()
-								.uri(URI.create(http))
-								.GET()
-								.build();
-			HttpClient client=HttpClient.newBuilder()
-								.build();
-			HttpResponse<String> respuesta=client.send(request, BodyHandlers.ofString());
-			return Arrays.stream(gson.fromJson(respuesta.body(), Item[].class));
-		}catch(Exception ex) {
-			ex.printStackTrace();
-			return Stream.empty();
-		}
-	}
 	public long casosTotales() {
 		LocalDate f=fechaMasReciente();
 		/*return itemsFromJson() //Stream<Item>
 		.filter(it->it.getIndicador().equals("cases")&&
 				Utilidades.convertirTextoFecha(it.getFechaMuestra()).equals(fechaMasReciente())) //Stream<Item>
 		.collect(Collectors.summingLong(it->it.getCasosAcumulados()));*/
-		 return itemsFromJson() 
+		 return ItemsLocator.itemsFromJson() 
 		            .filter(it -> it.getIndicador()
 		                    .equals("cases")&& FechaALocalDate.convertirTextoFecha(it.getFechaMuestra()).equals(f))
 		            .collect(Collectors.summingLong(it->it.getCasosAcumulados()));
@@ -52,7 +35,7 @@ public class CovidService {
 	}
 	
 	public LocalDate fechaMasReciente() {
-		return FechaALocalDate.convertirTextoFecha(itemsFromJson() //Stream<Item>
+		return FechaALocalDate.convertirTextoFecha(ItemsLocator.itemsFromJson()  //Stream<Item>
 				.max(Comparator.comparing(it->FechaALocalDate.convertirTextoFecha(it.getFechaMuestra()))) //Optional<Item>
 				.orElse(new Item()) //Item
 				.getFechaMuestra() //String
@@ -62,7 +45,7 @@ public class CovidService {
 	
 	//métodos para la incidencia media de cada pais
 	public double incidenciaMedia(String pais) {
-		return itemsFromJson()
+		return ItemsLocator.itemsFromJson() 
 				.filter(it->it.getPais().equals(pais)&&it.getIndicador().equals("cases")) //Stream<Pais>
 				.collect(Collectors.averagingDouble(it->it.getIncidencia()));
 				
@@ -70,14 +53,14 @@ public class CovidService {
 	}
 	
 	public List<String> paises(){
-		return itemsFromJson()
+		return ItemsLocator.itemsFromJson() 
                 .map(c->c.getPais())
                 .collect(Collectors.toList());
 	}
 	
 	//otra alternativa para la incidencia media de paises
 	public Map<String,Double> incidenciaMediaPaises(){
-		return itemsFromJson()
+		return ItemsLocator.itemsFromJson() 
 				.filter(it->it.getIndicador().equals("cases")) //Stream<Item>
 				.collect(Collectors.groupingBy(it->it.getPais(), Collectors.averagingDouble(it->it.getIncidencia())));
 	}
