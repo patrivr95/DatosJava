@@ -2,6 +2,8 @@ package model;
 
 import java.time.LocalDate;
 
+import com.google.gson.annotations.Expose;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +20,8 @@ public class Pedido {
 	private int idPedido;
 	private String producto;
 	private int unidades;
-	private LocalDate fecha;
+	@Expose(serialize=false)
+	//private LocalDate fecha;
 	private String tienda;
 
 }

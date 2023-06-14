@@ -11,7 +11,7 @@ public class ClienteSaludo {
 	public static void main(String[] args) {
 	
 		
-		try(Socket sc = new Socket("localhost", 8000);
+		try(Socket sc = new Socket("localhost", 9000);
 				PrintStream out = new PrintStream(sc.getOutputStream());
 		// lectura del mensaje enviado desde el servidor
 		BufferedReader bf = new BufferedReader(new InputStreamReader(sc.getInputStream())))
